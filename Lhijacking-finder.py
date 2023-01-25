@@ -16,8 +16,7 @@ def find_social_media_links(url):
     website_content = requests.get(url, allow_redirects=True).text
 
     # regex to find the social media links
-    social_media_links = re.findall(
-        r'https?:\/\/(?:www\.)?(instagram\.com|twitter\.com|facebook\.com|snapchat\.com|youtube\.com|t\.me)\/(channel\/|user\/|c\/|add\/)?([^\s\"\'\?\/\\]+)', website_content)
+    social_media_links = re.findall(r'https?:\/\/(?:www\.)?(instagram\.com|twitter\.com|facebook\.com|snapchat\.com|youtube\.com|t\.me)\/(channel\/|user\/|c\/|add\/)?([^\s\"\'\?\/\\]+)', website_content)
 
     for link in social_media_links:
 
@@ -57,8 +56,7 @@ def find_social_media_links(url):
                 youtube_profile_page = requests.get("https://youtube.com/" + link[1] + link[2]).status_code
                 if youtube_profile_page == 404:
                     print("Result for: " + url)
-                    print("\033[92m[*] YouTube account doesn’t exist: https://youtube.com/" + link[1] + link[
-                        2] + "\033[0m\n\n")
+                    print("\033[92m[*] YouTube account doesn’t exist: https://youtube.com/" + link[1] + link[2] + "\033[0m\n\n")
             except:
                 pass
 
